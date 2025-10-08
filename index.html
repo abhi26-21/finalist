@@ -3,295 +3,119 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Combined SDE + GATE CSE Roadmap</title>
+<title>10-Month Java Fullstack + DSA Roadmap</title>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
-
-body {
-    font-family: 'Inter', Arial, sans-serif;
-    margin: 0;
-    padding: 20px;
-    line-height: 1.6;
-    color: #e0e0e0;
-    background-color: #121212;
-}
-
-.container {
-    max-width: 1400px;
-    margin: 0 auto;
-}
-
-h1, h2, h3 {
-    color: #64b5f6;
-}
-
-h1 {
-    font-size: 2.5em;
-    color: #e0e0e0;
-    border-bottom: 3px solid #64b5f6;
-    padding-bottom: 10px;
-    margin-top: 0;
-}
-
-.table-wrapper {
-    overflow-x: auto;
-    margin-bottom: 40px;
-}
-
-table {
-    width: 100%;
-    border-collapse: separate;
-    border-spacing: 0;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.4);
-    border-radius: 10px;
-    overflow: hidden;
-    background-color: #1e1e1e;
-}
-
-th, td {
-    border: 1px solid #333;
-    padding: 12px 16px;
-    text-align: left;
-    transition: background-color 0.3s ease;
-}
-
-th {
-    background-color: #1f2a3a;
-    color: white;
-    font-weight: 700;
-    position: sticky;
-    top: 0;
-    z-index: 2;
-}
-
-tr:nth-child(even) {
-    background-color: #242424;
-}
-
-tr:hover {
-    background-color: #2c3e50;
-}
-
-input[type="checkbox"] {
-    transform: scale(1.3);
-    accent-color: #64b5f6;
-    cursor: pointer;
-}
-
-input[type="checkbox"]:checked {
-    outline: 2px solid #a5d6a7;
-    background-color: #a5d6a7;
-}
-
-.month-controls {
-    margin: 10px 0 20px;
-}
-
-.month-controls button {
-    margin-right: 10px;
-    padding: 6px 12px;
-    background-color: #1f2a3a;
-    color: white;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-}
-
-.month-controls button:hover {
-    background-color: #2c3e50;
-}
-
-.strategy-section {
-    margin-top: 30px;
-    padding: 25px;
-    border-left: 6px solid #fbc02d;
-    background-color: #242424;
-    margin-bottom: 40px;
-    border-radius: 10px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-}
-
-.strategy-section ul {
-    list-style: none;
-    padding-left: 0;
-}
-
-.strategy-section li {
-    margin-bottom: 12px;
-    padding-left: 25px;
-    position: relative;
-}
-
-.strategy-section li::before {
-    content: '✅';
-    position: absolute;
-    left: 0;
-    color: #a5d6a7;
-}
+body { font-family: 'Inter', Arial, sans-serif; margin:0; padding:20px; line-height:1.6; color:#e0e0e0; background-color:#121212; }
+.container { max-width: 1400px; margin:0 auto; }
+h1, h2, h3 { color:#64b5f6; }
+h1 { font-size:2.5em; color:#e0e0e0; border-bottom:3px solid #64b5f6; padding-bottom:10px; margin-top:0; }
+.table-wrapper { overflow-x:auto; margin-bottom:40px; }
+table { width:100%; border-collapse: separate; border-spacing:0; box-shadow:0 4px 12px rgba(0,0,0,0.4); border-radius:10px; overflow:hidden; background-color:#1e1e1e; }
+th, td { border:1px solid #333; padding:12px 16px; text-align:left; transition: background-color 0.3s ease; }
+th { background-color:#1f2a3a; color:white; font-weight:700; position:sticky; top:0; z-index:2; }
+tr:nth-child(even) { background-color:#242424; }
+tr:hover { background-color:#2c3e50; }
+input[type="checkbox"] { transform: scale(1.3); accent-color: #64b5f6; cursor:pointer; }
+input[type="checkbox"]:checked { outline:2px solid #a5d6a7; background-color:#a5d6a7; }
+.month-controls { margin:10px 0 20px; }
+.month-controls button { margin-right:10px; padding:6px 12px; background-color:#1f2a3a; color:white; border:none; border-radius:6px; cursor:pointer; }
+.month-controls button:hover { background-color:#2c3e50; }
+.strategy-section { margin-top:30px; padding:25px; border-left:6px solid #fbc02d; background-color:#242424; margin-bottom:40px; border-radius:10px; box-shadow:0 2px 5px rgba(0,0,0,0.2); }
+.strategy-section ul { list-style:none; padding-left:0; }
+.strategy-section li { margin-bottom:12px; padding-left:25px; position:relative; }
+.strategy-section li::before { content:'✅'; position:absolute; left:0; color:#a5d6a7; }
 </style>
 </head>
 <body>
 <div class="container">
-<h1>Combined SDE (10 Months) + GATE CSE (18 Months) Roadmap</h1>
+<h1>10-Month Java Fullstack + DSA Roadmap</h1>
 
 <div class="strategy-section">
-<h2>Strategic Learning & Reinforcement</h2>
-<h3>Daily Reinforcement Loop 🔄</h3>
+<h2>Weekly Strategy & Projects</h2>
 <ul>
-<li><strong>Review:</strong> Spend 15 min/day reviewing previous topics.</li>
-<li><strong>Active Recall:</strong> Test knowledge before checking notes.</li>
-<li><strong>Spaced Repetition:</strong> Revisit older problems weekly/monthly.</li>
-</ul>
-<h3>Problem Solving 🧩</h3>
-<ul>
-<li><strong>Solve by Pattern:</strong> Group algorithmic patterns.</li>
-<li><strong>"Why" over "What":</strong> Understand optimal structures.</li>
-<li><strong>Mock Interviews:</strong> Start timed problem solving from Month 4 (SDE).</li>
-</ul>
-<h3>Knowledge Bank 📚</h3>
-<ul>
-<li><strong>Problem Log:</strong> Track solved problems, approach, complexity.</li>
-<li><strong>Categorize Doubts:</strong> Record why you got stuck.</li>
-<li><strong>Write Clean Code:</strong> Maintain readability and efficiency.</li>
+<li><strong>Weekdays:</strong> Focus on Coding Blocks Java + DSA topics (smooth pacing, 1 topic per week).</li>
+<li><strong>Evenings:</strong> Parallel backend/frontend mini-tasks.</li>
+<li><strong>Sundays:</strong> Build mini-projects integrating the week’s learning.</li>
+<li><strong>End of Month:</strong> Full mini-project integrating backend + frontend + DB.</li>
+<li><strong>Daily:</strong> Solve 1–2 DSA problems for coding interview prep.</li>
 </ul>
 </div>
 
 <div class="table-wrapper">
-<table id="combinedRoadmap">
+<table id="fullstackRoadmap">
 <tr>
 <th>Week</th>
-<th>SDE Focus</th>
-<th>GATE CSE Focus</th>
+<th>Java + DSA (Coding Blocks)</th>
+<th>Backend / Frontend Focus</th>
+<th>Mini Project (Sunday)</th>
 <th>Done</th>
 </tr>
 
-<!-- Generate SDE + GATE weeks -->
 <script>
-const sdeWeeks = [
-"Introduction, Variables, Data Types, Loops, Conditions",
-"Functions & 1D Arrays",
-"2D Arrays & ArrayList",
-"Strings & StringBuilder",
-"Recursion Basics",
-"Recursion with Return + Backtracking",
-"OOPS Basics",
-"Collections Framework",
-"Linked List Basics",
-"Advanced Linked Lists",
-"Trees: Binary Trees",
-"Hashing & HashMaps",
-"Heap + Priority Queue",
-"Graphs: Basics",
-"Graphs: Advanced",
-"Revision & Mock Interviews",
-"DP Basics",
-"DP Advanced",
-"Greedy Algorithms",
-"Divide & Conquer",
-"Text Processing & String Algorithms",
-"Segment Tree & Bitmasking",
-"Misc Topics: Game, AVL, Adapters, Collections",
-"Revision & Mock Interview Prep",
-"Advanced Spring: Caching, Pagination, Transaction Management",
-"Messaging: RabbitMQ / Kafka",
-"Spring Boot Actuator & Monitoring",
-"Mini-Project: Backend Messaging",
-"Microservices Architecture",
-"Docker Basics",
-"Dockerizing Microservices",
-"Mini Project: Docker Compose",
-"Systems Design Fundamentals",
-"High-Level System Design",
-"Distributed Systems Concepts",
-"Review & Deeper Dive",
-"Final Project: E-commerce Backend",
-"Final Project: API & Database",
-"Deployment & CI/CD",
-"Portfolio & Interview Prep"
+// Weeks 1–24: Smooth Coding Blocks DSA pacing
+const first6Months = [
+["Intro: Variables & Loops","CLI: Hello World, Input/Output","Simple CLI Calculator"],
+["Arrays: 1D Arrays","File I/O Basics","Student Record CLI"],
+["Strings: Basics & Operations","String I/O & Validation","String Manipulator CLI"],
+["Functions: Basics & Modular Programming","Exception Handling & Logging","Function Utility CLI"],
+["Recursion Basics","JDBC Intro + CRUD","Library CLI App"],
+["Recursion with Return & Backtracking","Mini REST API Setup","Maze Solver CLI"],
+["OOPS: Classes & Objects","JDBC CRUD with DB","Bank Account CLI"],
+["OOPS: Inheritance & Polymorphism","REST API Controllers","Mini Inventory CLI"],
+["Stacks Basics","Spring Boot CRUD Setup","To-Do App CLI"],
+["Queues Basics","REST API + DB Integration","Queue Manager CLI"],
+["Linked List Basics","REST API Endpoints","Contact Manager CLI"],
+["Advanced Linked Lists","API + Frontend HTML & CSS","Address Book Web UI"],
+["Binary Trees Basics","Spring Boot + DB Integration","Tree Visualizer Web UI"],
+["HashMaps & Hashing","REST API Query Optimization","Job Directory App"],
+["Heap & Priority Queue","Spring Boot Pagination + Sorting","Priority Task App"],
+["Graphs Basics","React Intro + Fetch API","Mini Social Network Web UI"],
+["Graphs Advanced","React Routing + State","Auth-based Web App"],
+["DP Basics","React Forms & Validation","Expense Tracker Web App"],
+["DP Advanced","React + REST API Integration","Library Management Web UI"],
+["Greedy Algorithms","Spring Security Basics","Mini E-commerce App"],
+["Divide & Conquer","React + JWT Auth Integration","Chat Web App"],
+["Text Processing & String Algorithms","Spring Boot + React Integration","Dashboard Web App"],
+["Segment Tree & Bitmasking Basics","Advanced React Hooks & Context","Analytics Dashboard Web App"],
+["Misc Topics: Game, AVL, Adapters, Collections","Backend Optimizations & Logging","Portfolio Utility Project"],
+["Revision & Mock Interview Prep","Frontend + Backend Integration","Final Mini Project of Month"]
 ];
 
-const gateWeeks = [
-"Engineering Mathematics: Linear Algebra",
-"Engineering Mathematics: Calculus",
-"Data Structures: Arrays & Strings",
-"Data Structures: Linked Lists",
-"Data Structures: Stacks & Queues",
-"Data Structures: Trees",
-"Algorithms: Sorting & Searching",
-"Algorithms: Recursion & Backtracking",
-"Algorithms: Dynamic Programming Basics",
-"Algorithms: Greedy Techniques",
-"Algorithms: Divide & Conquer",
-"Algorithms: Graphs",
-"Computer Organization Basics",
-"Operating Systems Basics",
-"Operating Systems: Processes & Threads",
-"Operating Systems: Scheduling & Memory",
-"DBMS: ER Diagrams & Normalization",
-"DBMS: SQL Queries",
-"DBMS: Transactions & Indexing",
-"DBMS: Views & Stored Procedures",
-"Computer Networks Basics",
-"Computer Networks: TCP/IP, Routing",
-"Computer Networks: Transport Layer",
-"Computer Networks: Application Layer",
-"Software Engineering: SDLC, Models",
-"Software Engineering: Design Patterns",
-"Software Engineering: UML & CASE Tools",
-"Software Engineering: Testing & QA",
-"Software Engineering: Version Control",
-"Engineering Mathematics: Probability & Statistics",
-"Engineering Mathematics: Linear Algebra 2",
-"Data Structures: Advanced Trees",
-"Data Structures: Heaps",
-"Algorithms: Advanced DP",
-"Algorithms: Advanced Graphs",
-"Operating Systems: Deadlock, Virtual Memory",
-"Computer Networks: Network Security Basics",
-"DBMS: NoSQL Basics",
-"Software Engineering: Agile, Scrum",
-"Software Engineering: Software Metrics",
-"Engineering Mathematics: Numerical Methods",
-"Algorithms: String Matching & Tries",
-"Algorithms: Segment Trees & Fenwick Trees",
-"Computer Organization: Pipelining",
-"Operating Systems: File Systems",
-"Computer Networks: Wireless & Mobile",
-"DBMS: Data Warehousing & OLAP",
-"Software Engineering: Maintenance",
-"Engineering Mathematics: Complex Variables",
-"Engineering Mathematics: Laplace & Z-Transforms",
-"Algorithms: Bitmasking Techniques",
-"Algorithms: Game Theory Problems",
-"Computer Organization: Caches & Memory Hierarchy",
-"Operating Systems: Scheduling Advanced",
-"Computer Networks: QoS & Routing Algorithms",
-"DBMS: Transactions & Concurrency",
-"Software Engineering: CASE Tools Advanced",
-"Engineering Mathematics: Fourier Series & PDEs",
-"Algorithms: NP Problems & Approximation",
-"Algorithms: Randomized Algorithms",
-"Computer Organization: ALU & Control Unit",
-"Operating Systems: Virtualization & Security",
-"Computer Networks: Protocol Analysis",
-"DBMS: Distributed DBMS",
-"Software Engineering: Software Reliability",
-"Revision: Complete GATE Syllabus",
-"Revision: Solve Previous Year Papers",
-"Revision: Mock Tests & Timed Practice",
-"Revision: Advanced Mock Tests",
-"Revision: Full SDE + GATE Integration",
-"Revision: Full SDE + GATE Integration"
+// Weeks 25–44: Fullstack mastery + Advanced DSA
+const last4Months = [
+["Spring Boot Advanced: Caching, Transactions","React Advanced Patterns & Context","Fullstack E-commerce Project"],
+["Messaging: RabbitMQ / Kafka","React + API Integration","Chat System Project"],
+["Docker Basics","Dockerizing Backend Services","Docker Compose Mini Project"],
+["Microservices Architecture","React + Microservices","Fullstack Microservices Project"],
+["System Design Fundamentals","Frontend + Backend Scaling","High-Level System Design App"],
+["Final Project Backend Setup","React Frontend + DB Integration","Final E-commerce Project"],
+["Deployment & CI/CD","Deploy with AWS / Render","Portfolio Ready Web App"],
+["Advanced DSA Problem Solving","Fullstack Optimization & Testing","DSA + Fullstack Mini Project"],
+["Unit Testing & JUnit","React Testing + Axios","Tested Fullstack App"],
+["Event-Driven Backend","React Hooks + Context API","Event-driven Web App"],
+["Security Deep Dive: JWT + OAuth","React Security + Auth","Secure Fullstack App"],
+["Performance Tuning: SQL + Backend","React Lazy Loading & Optimization","Optimized Dashboard App"],
+["Async Programming & Multithreading","React Async Data Fetch","Async Web App Project"],
+["Project Enhancement & Features","UI Enhancements + API Features","Enhanced Portfolio App"],
+["Refactoring & Clean Code","Refactor React & Backend APIs","Clean Code Portfolio Project"],
+["Integration & CI/CD","Docker + Deployment Pipeline","Integrated Fullstack Project"],
+["Final Project Deployment & Testing","Final Portfolio QA","Deployed Portfolio Project"],
+["Advanced DSA Patterns","Backend + Frontend Integration","Advanced Algorithm Project"],
+["Final Revision & Portfolio Completion","Fullstack App Polishing","Complete Portfolio Web App"],
+["Capstone Project Enhancement","Final Testing & Optimization","Capstone Fullstack Project"]
 ];
+
+// Combine all weeks
+const roadmap = first6Months.concat(last4Months);
 
 // Generate table rows
-for(let i=0;i<72;i++){
-    const sde = sdeWeeks[i] || "-";
-    const gate = gateWeeks[i] || "-";
+for(let i=0;i<roadmap.length;i++){
     document.write(`<tr>
         <td>${i+1}</td>
-        <td>${sde}</td>
-        <td>${gate}</td>
+        <td>${roadmap[i][0]}</td>
+        <td>${roadmap[i][1]}</td>
+        <td>${roadmap[i][2]}</td>
         <td><input type="checkbox" id="week${i+1}"></td>
     </tr>`);
 }
@@ -300,8 +124,8 @@ for(let i=0;i<72;i++){
 </div>
 
 <div class="month-controls">
-<button onclick="markAllDone('combinedRoadmap')">Mark All Done</button>
-<button onclick="resetMonth('combinedRoadmap')">Reset</button>
+<button onclick="markAllDone('fullstackRoadmap')">Mark All Done</button>
+<button onclick="resetMonth('fullstackRoadmap')">Reset</button>
 </div>
 
 <script>
@@ -315,5 +139,16 @@ document.querySelectorAll('input[type="checkbox"]').forEach(cb => {
 function markAllDone(tableId){
     document.querySelectorAll(`#${tableId} input[type="checkbox"]`).forEach(cb=>{
         cb.checked=true;
-       
-0
+        localStorage.setItem(cb.id,true);
+    });
+}
+
+function resetMonth(tableId){
+    document.querySelectorAll(`#${tableId} input[type="checkbox"]`).forEach(cb=>{
+        cb.checked=false;
+        localStorage.setItem(cb.id,false);
+    });
+}
+</script>
+</body>
+</html>
