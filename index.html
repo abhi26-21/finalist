@@ -1,154 +1,306 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>10-Month Java Fullstack + DSA Roadmap</title>
-<style>
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
-body { font-family: 'Inter', Arial, sans-serif; margin:0; padding:20px; line-height:1.6; color:#e0e0e0; background-color:#121212; }
-.container { max-width: 1400px; margin:0 auto; }
-h1, h2, h3 { color:#64b5f6; }
-h1 { font-size:2.5em; color:#e0e0e0; border-bottom:3px solid #64b5f6; padding-bottom:10px; margin-top:0; }
-.table-wrapper { overflow-x:auto; margin-bottom:40px; }
-table { width:100%; border-collapse: separate; border-spacing:0; box-shadow:0 4px 12px rgba(0,0,0,0.4); border-radius:10px; overflow:hidden; background-color:#1e1e1e; }
-th, td { border:1px solid #333; padding:12px 16px; text-align:left; transition: background-color 0.3s ease; }
-th { background-color:#1f2a3a; color:white; font-weight:700; position:sticky; top:0; z-index:2; }
-tr:nth-child(even) { background-color:#242424; }
-tr:hover { background-color:#2c3e50; }
-input[type="checkbox"] { transform: scale(1.3); accent-color: #64b5f6; cursor:pointer; }
-input[type="checkbox"]:checked { outline:2px solid #a5d6a7; background-color:#a5d6a7; }
-.month-controls { margin:10px 0 20px; }
-.month-controls button { margin-right:10px; padding:6px 12px; background-color:#1f2a3a; color:white; border:none; border-radius:6px; cursor:pointer; }
-.month-controls button:hover { background-color:#2c3e50; }
-.strategy-section { margin-top:30px; padding:25px; border-left:6px solid #fbc02d; background-color:#242424; margin-bottom:40px; border-radius:10px; box-shadow:0 2px 5px rgba(0,0,0,0.2); }
-.strategy-section ul { list-style:none; padding-left:0; }
-.strategy-section li { margin-bottom:12px; padding-left:25px; position:relative; }
-.strategy-section li::before { content:'✅'; position:absolute; left:0; color:#a5d6a7; }
-</style>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Full-Stack Roadmap (Oct 2025 → Jul 2026)</title>
+  <style>
+    :root{--bg:#0f1724;--card:#0b1220;--muted:#9aa7bd;--accent:#06b6d4;--accent-2:#7c3aed}
+    html,body{height:100%;margin:0;font-family:Inter,system-ui,Segoe UI,Roboto,'Helvetica Neue',Arial;color:#e6eef8;background:linear-gradient(180deg,#071029 0%, #071b2a 60%);}
+    .app{max-width:1100px;margin:24px auto;padding:20px;}
+    header{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px}
+    h1{font-size:20px;margin:0}
+    .sub{color:var(--muted);font-size:13px}
+    .controls{display:flex;gap:8px;align-items:center}
+    button{background:var(--accent);border:0;color:white;padding:8px 10px;border-radius:8px;cursor:pointer}
+    .grid{display:grid;grid-template-columns:1fr 360px;gap:18px}
+    .card{background:rgba(255,255,255,0.03);padding:14px;border-radius:12px;box-shadow:0 6px 18px rgba(2,6,23,0.6);}
+    .months{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+    .month{background:linear-gradient(180deg,rgba(255,255,255,0.02),transparent);padding:12px;border-radius:10px}
+    .month h3{margin:0;font-size:15px}
+    ul.tasks{list-style:none;padding:8px 0 0 0;margin:0;max-height:200px;overflow:auto}
+    .task{display:flex;align-items:flex-start;gap:8px;padding:6px 0;border-bottom:1px dashed rgba(255,255,255,0.02)}
+    .task label{color:var(--muted);font-size:13px}
+    .progressWrap{margin-top:10px}
+    .progress{height:10px;background:rgba(255,255,255,0.03);border-radius:999px;overflow:hidden}
+    .progress > i{display:block;height:100%;background:linear-gradient(90deg,var(--accent),var(--accent-2));width:0%}
+    aside .card h4{margin:0 0 8px 0}
+    .section{margin-top:10px}
+    .section h4{margin:6px 0;color:#bfeaf6}
+    textarea{width:100%;height:120px;padding:8px;border-radius:8px;background:rgba(255,255,255,0.02);color:inherit;border:1px solid rgba(255,255,255,0.03)}
+    .small{font-size:12px;color:var(--muted)}
+    .controls input{padding:8px;border-radius:8px;border:1px solid rgba(255,255,255,0.05);background:transparent;color:inherit}
+    .btn-ghost{background:transparent;border:1px solid rgba(255,255,255,0.06)}
+    .pill{display:inline-block;padding:6px 8px;border-radius:999px;background:rgba(255,255,255,0.02);font-size:12px;margin-right:6px}
+    footer{margin-top:18px;color:var(--muted);font-size:13px}
+    .topbar-info{display:flex;gap:10px;align-items:center}
+    .stat{background:rgba(255,255,255,0.02);padding:8px 10px;border-radius:8px}
+    .month-header{display:flex;justify-content:space-between;align-items:center}
+    .month .meta{font-size:12px;color:var(--muted)}
+    .search{width:220px}
+    .companies li{margin:6px 0}
+    .exportBtns{display:flex;gap:8px}
+    @media (max-width:900px){.grid{grid-template-columns:1fr} .months{grid-template-columns:1fr}}
+  </style>
 </head>
 <body>
-<div class="container">
-<h1>10-Month Java Fullstack + DSA Roadmap</h1>
+  <div class="app">
+    <header>
+      <div>
+        <h1>Full-Stack Roadmap — Oct 2025 → Jul 2026</h1>
+        <div class="sub">Combined DSA + Java backend + Frontend (React) plan — interactive tracker</div>
+      </div>
+      <div class="controls">
+        <div class="topbar-info">
+          <div class="stat">Overall Progress: <span id="overallPct">0%</span></div>
+          <div class="stat">Next target: <strong id="nextTarget">Oct 2025 - HTML basics</strong></div>
+        </div>
+        <input class="search" id="search" placeholder="Search tasks or months...">
+        <button id="reset">Reset</button>
+      </div>
+    </header>
 
-<div class="strategy-section">
-<h2>Weekly Strategy & Projects</h2>
-<ul>
-<li><strong>Weekdays:</strong> Focus on Coding Blocks Java + DSA topics (smooth pacing, 1 topic per week).</li>
-<li><strong>Evenings:</strong> Parallel backend/frontend mini-tasks.</li>
-<li><strong>Sundays:</strong> Build mini-projects integrating the week’s learning.</li>
-<li><strong>End of Month:</strong> Full mini-project integrating backend + frontend + DB.</li>
-<li><strong>Daily:</strong> Solve 1–2 DSA problems for coding interview prep.</li>
-</ul>
-</div>
+    <div class="grid">
+      <div>
+        <div class="card">
+          <h2 style="margin:0 0 6px 0">Monthly Roadmap</h2>
+          <div class="small">Click checkboxes to mark tasks done. Your progress is saved in the browser (localStorage).</div>
 
-<div class="table-wrapper">
-<table id="fullstackRoadmap">
-<tr>
-<th>Week</th>
-<th>Java + DSA (Coding Blocks)</th>
-<th>Backend / Frontend Focus</th>
-<th>Mini Project (Sunday)</th>
-<th>Done</th>
-</tr>
+          <div class="months" id="months"></div>
 
-<script>
-// Weeks 1–24: Smooth Coding Blocks DSA pacing
-const first6Months = [
-["Intro: Variables & Loops","CLI: Hello World, Input/Output","Simple CLI Calculator"],
-["Arrays: 1D Arrays","File I/O Basics","Student Record CLI"],
-["Strings: Basics & Operations","String I/O & Validation","String Manipulator CLI"],
-["Functions: Basics & Modular Programming","Exception Handling & Logging","Function Utility CLI"],
-["Recursion Basics","JDBC Intro + CRUD","Library CLI App"],
-["Recursion with Return & Backtracking","Mini REST API Setup","Maze Solver CLI"],
-["OOPS: Classes & Objects","JDBC CRUD with DB","Bank Account CLI"],
-["OOPS: Inheritance & Polymorphism","REST API Controllers","Mini Inventory CLI"],
-["Stacks Basics","Spring Boot CRUD Setup","To-Do App CLI"],
-["Queues Basics","REST API + DB Integration","Queue Manager CLI"],
-["Linked List Basics","REST API Endpoints","Contact Manager CLI"],
-["Advanced Linked Lists","API + Frontend HTML & CSS","Address Book Web UI"],
-["Binary Trees Basics","Spring Boot + DB Integration","Tree Visualizer Web UI"],
-["HashMaps & Hashing","REST API Query Optimization","Job Directory App"],
-["Heap & Priority Queue","Spring Boot Pagination + Sorting","Priority Task App"],
-["Graphs Basics","React Intro + Fetch API","Mini Social Network Web UI"],
-["Graphs Advanced","React Routing + State","Auth-based Web App"],
-["DP Basics","React Forms & Validation","Expense Tracker Web App"],
-["DP Advanced","React + REST API Integration","Library Management Web UI"],
-["Greedy Algorithms","Spring Security Basics","Mini E-commerce App"],
-["Divide & Conquer","React + JWT Auth Integration","Chat Web App"],
-["Text Processing & String Algorithms","Spring Boot + React Integration","Dashboard Web App"],
-["Segment Tree & Bitmasking Basics","Advanced React Hooks & Context","Analytics Dashboard Web App"],
-["Misc Topics: Game, AVL, Adapters, Collections","Backend Optimizations & Logging","Portfolio Utility Project"],
-["Revision & Mock Interview Prep","Frontend + Backend Integration","Final Mini Project of Month"]
-];
+          <div style="margin-top:12px;display:flex;gap:8px;align-items:center">
+            <button id="exportJSON">Export Progress</button>
+            <button class="btn-ghost" id="importJSON">Import Progress</button>
+            <input type="file" id="importFile" style="display:none">
+          </div>
+        </div>
 
-// Weeks 25–44: Fullstack mastery + Advanced DSA
-const last4Months = [
-["Spring Boot Advanced: Caching, Transactions","React Advanced Patterns & Context","Fullstack E-commerce Project"],
-["Messaging: RabbitMQ / Kafka","React + API Integration","Chat System Project"],
-["Docker Basics","Dockerizing Backend Services","Docker Compose Mini Project"],
-["Microservices Architecture","React + Microservices","Fullstack Microservices Project"],
-["System Design Fundamentals","Frontend + Backend Scaling","High-Level System Design App"],
-["Final Project Backend Setup","React Frontend + DB Integration","Final E-commerce Project"],
-["Deployment & CI/CD","Deploy with AWS / Render","Portfolio Ready Web App"],
-["Advanced DSA Problem Solving","Fullstack Optimization & Testing","DSA + Fullstack Mini Project"],
-["Unit Testing & JUnit","React Testing + Axios","Tested Fullstack App"],
-["Event-Driven Backend","React Hooks + Context API","Event-driven Web App"],
-["Security Deep Dive: JWT + OAuth","React Security + Auth","Secure Fullstack App"],
-["Performance Tuning: SQL + Backend","React Lazy Loading & Optimization","Optimized Dashboard App"],
-["Async Programming & Multithreading","React Async Data Fetch","Async Web App Project"],
-["Project Enhancement & Features","UI Enhancements + API Features","Enhanced Portfolio App"],
-["Refactoring & Clean Code","Refactor React & Backend APIs","Clean Code Portfolio Project"],
-["Integration & CI/CD","Docker + Deployment Pipeline","Integrated Fullstack Project"],
-["Final Project Deployment & Testing","Final Portfolio QA","Deployed Portfolio Project"],
-["Advanced DSA Patterns","Backend + Frontend Integration","Advanced Algorithm Project"],
-["Final Revision & Portfolio Completion","Fullstack App Polishing","Complete Portfolio Web App"],
-["Capstone Project Enhancement","Final Testing & Optimization","Capstone Fullstack Project"]
-];
+        <div class="card" style="margin-top:12px">
+          <h3>Project: SkillHub — Job Matching Platform</h3>
+          <div class="small">Tech: Spring Boot, JWT, PostgreSQL, React, Tailwind, Deploy (Render/Vercel)</div>
+          <div class="section">
+            <h4>Milestones</h4>
+            <ul>
+              <li>API: User auth, job CRUD, search & filters</li>
+              <li>Frontend: Auth flow, job listings, apply flow</li>
+              <li>Deploy: CI/CD, docs, README, portfolio link</li>
+            </ul>
+          </div>
+        </div>
 
-// Combine all weeks
-const roadmap = first6Months.concat(last4Months);
+      </div>
 
-// Generate table rows
-for(let i=0;i<roadmap.length;i++){
-    document.write(`<tr>
-        <td>${i+1}</td>
-        <td>${roadmap[i][0]}</td>
-        <td>${roadmap[i][1]}</td>
-        <td>${roadmap[i][2]}</td>
-        <td><input type="checkbox" id="week${i+1}"></td>
-    </tr>`);
-}
-</script>
-</table>
-</div>
+      <aside>
+        <div class="card">
+          <h4>Quick Controls</h4>
+          <div style="display:flex;gap:8px;margin-top:8px">
+            <button id="markMonthDone">Mark Month Done</button>
+            <button id="clearMonth">Clear Month</button>
+          </div>
 
-<div class="month-controls">
-<button onclick="markAllDone('fullstackRoadmap')">Mark All Done</button>
-<button onclick="resetMonth('fullstackRoadmap')">Reset</button>
-</div>
+          <div class="section">
+            <h4>Notes</h4>
+            <textarea id="notes" placeholder="Personal notes for roadmap..."></textarea>
+            <div style="display:flex;gap:8px;margin-top:8px"><button id="saveNotes">Save</button><button class="btn-ghost" id="clearNotes">Clear</button></div>
+          </div>
+
+          <div class="section">
+            <h4>Interview Prep</h4>
+            <div class="small">DSA schedule: 2hr/day, 5–6 days/week. Focus: Arrays → Strings → Recursion → Trees → DP → Graphs</div>
+            <div style="margin-top:8px"><span class="pill">Mock interviews: weekly</span><span class="pill">Resume: Apr 2026</span></div>
+          </div>
+
+          <div class="section">
+            <h4>Companies & Timelines</h4>
+            <ul class="companies small">
+              <li><strong>Microsoft</strong> — Apply: Nov 2025–Jan 2026</li>
+              <li><strong>Amazon</strong> — Apply: Dec 2025–Feb 2026</li>
+              <li><strong>Zoho / Atlassian / Oracle</strong> — Jan–Mar 2026</li>
+              <li><strong>Startups (Swiggy / Zomato)</strong> — Rolling Mar–Jun 2026</li>
+              <li><strong>GSoC / Open Source</strong> — Org list Feb 2026, Proposals Mar 2026</li>
+            </ul>
+          </div>
+
+        </div>
+
+        <div class="card" style="margin-top:12px">
+          <h4>Tips</h4>
+          <ol class="small">
+            <li>Keep 2 hrs/day for DSA and 1–2 hrs/day for project work.</li>
+            <li>Upload code to GitHub & pin 2 main projects.</li>
+            <li>Write short README + deployment link for each project.</li>
+          </ol>
+        </div>
+
+      </aside>
+    </div>
+
+    <footer>
+      <div class="card" style="margin-top:12px">
+        <div class="small">Roadmap generated for Abhiram — Oct 17, 2025. Local persistence: browser localStorage. Use export/import to backup or share progress.</div>
+      </div>
+    </footer>
+  </div>
 
 <script>
-// Save & load checkboxes
-document.querySelectorAll('input[type="checkbox"]').forEach(cb => {
-    const saved = localStorage.getItem(cb.id);
-    if(saved==='true') cb.checked = true;
-    cb.addEventListener('change',()=>localStorage.setItem(cb.id,cb.checked));
-});
+(function(){
+  const roadmap = [
+    {id:'oct2025', month:'October 2025', tasks:[
+      'Setup GitHub profile & repo structure',
+      'HTML Basics: semantic tags, forms',
+      'CSS Basics: box-model, flexbox, grid',
+      'Start DSA: Arrays practice (Pepcoding challenges)'
+    ]},
+    {id:'nov2025', month:'November 2025', tasks:[
+      'Advanced CSS: responsive design + portfolio site',
+      'JavaScript fundamentals: ES6+, functions, closures',
+      'Backend: Spring Boot basics — controllers & JPA'
+    ]},
+    {id:'dec2025', month:'December 2025', tasks:[
+      'DOM, Events & Vanilla JS project (Todo app)',
+      'Spring Security basics: JWT auth',
+      'DSA: Recursion & Backtracking practice'
+    ]},
+    {id:'jan2026', month:'January 2026', tasks:[
+      'React fundamentals: components, hooks, router',
+      'Connect React to Spring Boot APIs (Axios)',
+      'DSA: Linked List, Stack & Queue sections'
+    ]},
+    {id:'feb2026', month:'February 2026', tasks:[
+      'Build SkillHub MVP: auth, job CRUD endpoints',
+      'React: state management, forms, client-side validation',
+      'DSA: Trees, BST, HashMap practice'
+    ]},
+    {id:'mar2026', month:'March 2026', tasks:[
+      'Add features: pagination, search filters, file upload',
+      'Add caching (Redis) or explain caching design',
+      'DSA: Heap & DP basics — start solving medium problems'
+    ]},
+    {id:'apr2026', month:'April 2026', tasks:[
+      'Testing & CI: unit tests, GitHub Actions basics',
+      'Deploy backend + frontend (Render / Vercel)',
+      'DSA: Advanced DP, start system-design basics'
+    ]},
+    {id:'may2026', month:'May 2026', tasks:[
+      'Mock interviews: weekly (DSA + system design)',
+      'Polish resume + LinkedIn + portfolio',
+      'DSA: Graphs practice + timed contests'
+    ]},
+    {id:'jun2026', month:'June 2026', tasks:[
+      'Final project polish + README + demo video',
+      'Apply to internships & track apps',
+      'DSA: Revision of top 150 problems'
+    ]},
+    {id:'jul2026', month:'July 2026', tasks:[
+      'Interview season: live interviews + followups',
+      'Behavioral prep: STAR stories for projects',
+      'Continue DSA maintenance & learning from feedback'
+    ]}
+  ];
 
-function markAllDone(tableId){
-    document.querySelectorAll(`#${tableId} input[type="checkbox"]`).forEach(cb=>{
-        cb.checked=true;
-        localStorage.setItem(cb.id,true);
-    });
-}
+  const storageKey = 'fullstack_roadmap_progress_v1';
+  let state = JSON.parse(localStorage.getItem(storageKey) || '{}');
 
-function resetMonth(tableId){
-    document.querySelectorAll(`#${tableId} input[type="checkbox"]`).forEach(cb=>{
-        cb.checked=false;
-        localStorage.setItem(cb.id,false);
+  function save(){ localStorage.setItem(storageKey, JSON.stringify(state)); updateUI(); }
+
+  const monthsEl = document.getElementById('months');
+  function createMonthCard(m){
+    const wrap = document.createElement('div'); wrap.className='month';
+    const header = document.createElement('div'); header.className='month-header';
+    const h = document.createElement('h3'); h.textContent = m.month; header.appendChild(h);
+    const meta = document.createElement('div'); meta.className='meta'; header.appendChild(meta);
+    wrap.appendChild(header);
+
+    const list = document.createElement('ul'); list.className='tasks';
+    m.tasks.forEach((t,idx)=>{
+      const li = document.createElement('li'); li.className='task';
+      const id = m.id + '_t' + idx;
+      const chk = document.createElement('input'); chk.type='checkbox'; chk.id = id;
+      const lbl = document.createElement('label'); lbl.htmlFor = id; lbl.textContent = t;
+      chk.checked = (state[id]===true);
+      chk.addEventListener('change', ()=>{ state[id]=chk.checked; save(); });
+      li.appendChild(chk); li.appendChild(lbl); list.appendChild(li);
     });
-}
+
+    wrap.appendChild(list);
+
+    const pwrap = document.createElement('div'); pwrap.className='progressWrap';
+    const prog = document.createElement('div'); prog.className='progress';
+    const bar = document.createElement('i'); prog.appendChild(bar); pwrap.appendChild(prog); wrap.appendChild(pwrap);
+
+    // mark/clear buttons
+    const btns = document.createElement('div'); btns.style.marginTop='8px';
+    const mark = document.createElement('button'); mark.textContent='Mark all';
+    mark.addEventListener('click', ()=>{ m.tasks.forEach((t,idx)=>{ state[m.id + '_t' + idx]=true; }); save(); });
+    const clear = document.createElement('button'); clear.textContent='Clear'; clear.className='btn-ghost';
+    clear.addEventListener('click', ()=>{ m.tasks.forEach((t,idx)=>{ state[m.id + '_t' + idx]=false; }); save(); });
+    btns.appendChild(mark); btns.appendChild(clear); wrap.appendChild(btns);
+
+    monthsEl.appendChild(wrap);
+    return {wrap,bar,meta,m};
+  }
+
+  const cards = roadmap.map(createMonthCard);
+
+  function computeProgress(){
+    let done=0,total=0; roadmap.forEach(m=>{ m.tasks.forEach((t,idx)=>{ total++; if(state[m.id+'_t'+idx]) done++; }) });
+    return Math.round(total? (done/total)*100 : 0);
+  }
+
+  function updateUI(){
+    cards.forEach(c=>{
+      const {m,bar,meta,wrap} = c;
+      const total = m.tasks.length; let done=0; m.tasks.forEach((t,idx)=>{ if(state[m.id+'_t'+idx]) done++; });
+      const pct = total? Math.round((done/total)*100) : 0; bar.style.width = pct+'%';
+      meta.textContent = `${done}/${total} tasks`;
+    });
+    const overall = computeProgress(); document.getElementById('overallPct').textContent = overall + '%';
+
+    // next target: find first undone task
+    let next='All set — great job!'; outer: for(const m of roadmap){ for(let i=0;i<m.tasks.length;i++){ if(!state[m.id+'_t'+i]){ next = m.month + ' — ' + m.tasks[i]; break outer; } } }
+    document.getElementById('nextTarget').textContent = next;
+  }
+
+  document.getElementById('reset').addEventListener('click', ()=>{ if(confirm('Reset all saved progress?')){ state={}; save(); } });
+  document.getElementById('markMonthDone').addEventListener('click', ()=>{
+    const month = prompt('Enter month id to mark done (ex: oct2025)'); if(!month) return; const m = roadmap.find(x=>x.id===month); if(!m){ alert('Month id not found'); return; } m.tasks.forEach((t,idx)=> state[m.id+'_t'+idx]=true); save();
+  });
+  document.getElementById('clearMonth').addEventListener('click', ()=>{
+    const month = prompt('Enter month id to clear (ex: oct2025)'); if(!month) return; const m = roadmap.find(x=>x.id===month); if(!m){ alert('Month id not found'); return; } m.tasks.forEach((t,idx)=> state[m.id+'_t'+idx]=false); save();
+  });
+
+  document.getElementById('notes').value = state.notes || '';
+  document.getElementById('saveNotes').addEventListener('click', ()=>{ state.notes = document.getElementById('notes').value; save(); alert('Notes saved'); });
+  document.getElementById('clearNotes').addEventListener('click', ()=>{ if(confirm('Clear notes?')){ state.notes=''; document.getElementById('notes').value=''; save(); } });
+
+  // import/export
+  document.getElementById('exportJSON').addEventListener('click', ()=>{
+    const dataStr = JSON.stringify(state,null,2);
+    const blob = new Blob([dataStr],{type:'application/json'});
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a'); a.href=url; a.download='roadmap-progress.json'; document.body.appendChild(a); a.click(); a.remove(); URL.revokeObjectURL(url);
+  });
+  document.getElementById('importJSON').addEventListener('click', ()=>{ document.getElementById('importFile').click(); });
+  document.getElementById('importFile').addEventListener('change', (e)=>{
+    const f = e.target.files[0]; if(!f) return; const reader = new FileReader(); reader.onload = ()=>{ try{ const obj = JSON.parse(reader.result); state = obj; save(); alert('Imported progress'); }catch(err){ alert('Invalid file'); } }; reader.readAsText(f);
+  });
+
+  // search
+  document.getElementById('search').addEventListener('input', (e)=>{
+    const q = e.target.value.trim().toLowerCase(); cards.forEach(c=>{
+      const {m,wrap} = c;
+      const has = m.tasks.some(t=> t.toLowerCase().includes(q)) || m.month.toLowerCase().includes(q);
+      wrap.style.display = q? (has? 'block':'none') : 'block';
+    });
+  });
+
+  // initialize defaults if empty
+  if(!state || Object.keys(state).length===0){ state = state || {}; /* leave empty: user will check items as they go */ }
+  // load notes
+  document.getElementById('notes').value = state.notes || '';
+
+  updateUI();
+})();
 </script>
 </body>
 </html>
