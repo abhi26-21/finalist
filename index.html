@@ -2,304 +2,347 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Full-Stack Roadmap (Oct 2025 → Jul 2026)</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>8-Month Java Full Stack Roadmap — Daily Planner</title>
   <style>
-    :root{--bg:#0f1724;--card:#0b1220;--muted:#9aa7bd;--accent:#06b6d4;--accent-2:#7c3aed}
-    html,body{height:100%;margin:0;font-family:Inter,system-ui,Segoe UI,Roboto,'Helvetica Neue',Arial;color:#e6eef8;background:linear-gradient(180deg,#071029 0%, #071b2a 60%);}
-    .app{max-width:1100px;margin:24px auto;padding:20px;}
-    header{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px}
-    h1{font-size:20px;margin:0}
-    .sub{color:var(--muted);font-size:13px}
-    .controls{display:flex;gap:8px;align-items:center}
-    button{background:var(--accent);border:0;color:white;padding:8px 10px;border-radius:8px;cursor:pointer}
-    .grid{display:grid;grid-template-columns:1fr 360px;gap:18px}
-    .card{background:rgba(255,255,255,0.03);padding:14px;border-radius:12px;box-shadow:0 6px 18px rgba(2,6,23,0.6);}
-    .months{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
-    .month{background:linear-gradient(180deg,rgba(255,255,255,0.02),transparent);padding:12px;border-radius:10px}
-    .month h3{margin:0;font-size:15px}
-    ul.tasks{list-style:none;padding:8px 0 0 0;margin:0;max-height:200px;overflow:auto}
-    .task{display:flex;align-items:flex-start;gap:8px;padding:6px 0;border-bottom:1px dashed rgba(255,255,255,0.02)}
-    .task label{color:var(--muted);font-size:13px}
-    .progressWrap{margin-top:10px}
-    .progress{height:10px;background:rgba(255,255,255,0.03);border-radius:999px;overflow:hidden}
-    .progress > i{display:block;height:100%;background:linear-gradient(90deg,var(--accent),var(--accent-2));width:0%}
-    aside .card h4{margin:0 0 8px 0}
-    .section{margin-top:10px}
-    .section h4{margin:6px 0;color:#bfeaf6}
-    textarea{width:100%;height:120px;padding:8px;border-radius:8px;background:rgba(255,255,255,0.02);color:inherit;border:1px solid rgba(255,255,255,0.03)}
-    .small{font-size:12px;color:var(--muted)}
-    .controls input{padding:8px;border-radius:8px;border:1px solid rgba(255,255,255,0.05);background:transparent;color:inherit}
-    .btn-ghost{background:transparent;border:1px solid rgba(255,255,255,0.06)}
-    .pill{display:inline-block;padding:6px 8px;border-radius:999px;background:rgba(255,255,255,0.02);font-size:12px;margin-right:6px}
-    footer{margin-top:18px;color:var(--muted);font-size:13px}
-    .topbar-info{display:flex;gap:10px;align-items:center}
-    .stat{background:rgba(255,255,255,0.02);padding:8px 10px;border-radius:8px}
-    .month-header{display:flex;justify-content:space-between;align-items:center}
-    .month .meta{font-size:12px;color:var(--muted)}
-    .search{width:220px}
-    .companies li{margin:6px 0}
-    .exportBtns{display:flex;gap:8px}
-    @media (max-width:900px){.grid{grid-template-columns:1fr} .months{grid-template-columns:1fr}}
+    :root{
+      --bg:#061018;--panel:#071823;--accent:#00d1ff;--muted:#9fb3bf;--glass:rgba(255,255,255,0.03);
+      --card-radius:12px;--mono: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    }
+    html,body{height:100%;margin:0;font-family:var(--mono);background:linear-gradient(180deg,#041018,#071120);color:#dff6fb}
+    .app{max-width:1100px;margin:28px auto;padding:28px;border-radius:14px;background:linear-gradient(180deg, rgba(0,0,0,0.25), rgba(0,0,0,0.15));box-shadow:0 8px 40px rgba(0,0,0,0.6)}
+    header{display:flex;align-items:center;justify-content:space-between;gap:16px}
+    h1{margin:0;font-size:20px;color:var(--accent)}
+    p.lead{margin:4px 0 0;color:var(--muted);font-size:13px}
+
+    .controls{display:flex;gap:12px;flex-wrap:wrap;margin-top:18px}
+    .control{background:var(--panel);padding:8px;border-radius:10px;border:1px solid rgba(0,0,0,0.4);display:flex;gap:8px;align-items:center}
+    label{font-size:12px;color:var(--muted)}
+    input[type=date],select,input[type=number]{background:transparent;border:0;color:#dff6fb;outline:none}
+    button.btn{background:linear-gradient(90deg,var(--accent),#72f0ff);color:#00212a;border:0;padding:8px 12px;border-radius:10px;font-weight:600;cursor:pointer}
+
+    .main{display:grid;grid-template-columns:1fr 360px;gap:18px;margin-top:20px}
+    .calendar{background:var(--glass);padding:12px;border-radius:12px;border:1px solid rgba(0,0,0,0.4)}
+    .sidebar{background:linear-gradient(180deg, rgba(0,0,0,0.05), rgba(0,0,0,0.02));padding:12px;border-radius:12px}
+
+    .week-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:8px}
+    .day{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.06));padding:10px;border-radius:10px;border:1px solid rgba(0,0,0,0.45);min-height:110px}
+    .day .date{font-size:12px;color:var(--muted);margin-bottom:6px}
+    .pill{display:inline-block;padding:6px 8px;border-radius:8px;font-size:12px;margin:3px 0;max-width:100%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+    .backend{background:linear-gradient(90deg,#022b3a,#004a5f);color:#9ff3ff}
+    .frontend{background:linear-gradient(90deg,#2c0236,#7a0b5a);color:#ffd7ff}
+    .dsa{background:linear-gradient(90deg,#00331a,#00683d);color:#c9ffdf}
+    .project{background:linear-gradient(90deg,#4b2b00,#a86b00);color:#fff1d6}
+
+    .legend{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+    .legend .item{display:flex;gap:8px;align-items:center}
+    .swatch{width:14px;height:14px;border-radius:4px}
+
+    .sidebar h3{margin-top:0}
+    .task-detail{font-size:13px;color:var(--muted);line-height:1.45}
+    .save-note{font-size:12px;color:var(--muted);margin-top:10px}
+    .actions{display:flex;gap:8px;margin-top:12px}
+
+    footer{margin-top:18px;color:var(--muted);font-size:12px;text-align:center}
+
+    /* responsive */
+    @media (max-width:980px){.main{grid-template-columns:1fr} .sidebar{order:2}}
   </style>
 </head>
 <body>
   <div class="app">
     <header>
       <div>
-        <h1>Full-Stack Roadmap — Oct 2025 → Jul 2026</h1>
-        <div class="sub">Combined DSA + Java backend + Frontend (React) plan — interactive tracker</div>
+        <h1>Java Full Stack — 8 Month Daily Roadmap</h1>
+        <p class="lead">Aggressive plan · DSA everyday · Java Backend (Spring Boot) · React frontend · Projects & revision</p>
       </div>
-      <div class="controls">
-        <div class="topbar-info">
-          <div class="stat">Overall Progress: <span id="overallPct">0%</span></div>
-          <div class="stat">Next target: <strong id="nextTarget">Oct 2025 - HTML basics</strong></div>
-        </div>
-        <input class="search" id="search" placeholder="Search tasks or months...">
-        <button id="reset">Reset</button>
+      <div style="text-align:right">
+        <div>Duration: <strong>8 Months</strong></div>
+        <div style="color:var(--muted);font-size:12px">Theme: Tech Futuristic</div>
       </div>
     </header>
 
-    <div class="grid">
-      <div>
-        <div class="card">
-          <h2 style="margin:0 0 6px 0">Monthly Roadmap</h2>
-          <div class="small">Click checkboxes to mark tasks done. Your progress is saved in the browser (localStorage).</div>
+    <div class="controls">
+      <div class="control">
+        <label>Start Date</label>
+        <input id="startDate" type="date" />
+      </div>
+      <div class="control">
+        <label>Start Weekday</label>
+        <select id="startWeekday">
+          <option value="0">Use selected start date</option>
+        </select>
+      </div>
+      <div class="control">
+        <label>Daily DSA Time</label>
+        <input id="dsaMins" type="number" min="15" step="15" value="60" /> mins
+      </div>
+      <div class="control">
+        <button class="btn" id="generate">Generate 8-Month Plan</button>
+      </div>
+      <div class="control">
+        <button class="btn" id="exportJson">Export JSON</button>
+      </div>
+    </div>
 
-          <div class="months" id="months"></div>
-
-          <div style="margin-top:12px;display:flex;gap:8px;align-items:center">
-            <button id="exportJSON">Export Progress</button>
-            <button class="btn-ghost" id="importJSON">Import Progress</button>
-            <input type="file" id="importFile" style="display:none">
-          </div>
-        </div>
-
-        <div class="card" style="margin-top:12px">
-          <h3>Project: SkillHub — Job Matching Platform</h3>
-          <div class="small">Tech: Spring Boot, JWT, PostgreSQL, React, Tailwind, Deploy (Render/Vercel)</div>
-          <div class="section">
-            <h4>Milestones</h4>
-            <ul>
-              <li>API: User auth, job CRUD, search & filters</li>
-              <li>Frontend: Auth flow, job listings, apply flow</li>
-              <li>Deploy: CI/CD, docs, README, portfolio link</li>
-            </ul>
-          </div>
-        </div>
-
+    <div class="main">
+      <div class="calendar" id="calendarRoot">
+        <!-- Dynamic weeks will be injected here -->
       </div>
 
-      <aside>
-        <div class="card">
-          <h4>Quick Controls</h4>
-          <div style="display:flex;gap:8px;margin-top:8px">
-            <button id="markMonthDone">Mark Month Done</button>
-            <button id="clearMonth">Clear Month</button>
-          </div>
-
-          <div class="section">
-            <h4>Notes</h4>
-            <textarea id="notes" placeholder="Personal notes for roadmap..."></textarea>
-            <div style="display:flex;gap:8px;margin-top:8px"><button id="saveNotes">Save</button><button class="btn-ghost" id="clearNotes">Clear</button></div>
-          </div>
-
-          <div class="section">
-            <h4>Interview Prep</h4>
-            <div class="small">DSA schedule: 2hr/day, 5–6 days/week. Focus: Arrays → Strings → Recursion → Trees → DP → Graphs</div>
-            <div style="margin-top:8px"><span class="pill">Mock interviews: weekly</span><span class="pill">Resume: Apr 2026</span></div>
-          </div>
-
-          <div class="section">
-            <h4>Companies & Timelines</h4>
-            <ul class="companies small">
-              <li><strong>Microsoft</strong> — Apply: Nov 2025–Jan 2026</li>
-              <li><strong>Amazon</strong> — Apply: Dec 2025–Feb 2026</li>
-              <li><strong>Zoho / Atlassian / Oracle</strong> — Jan–Mar 2026</li>
-              <li><strong>Startups (Swiggy / Zomato)</strong> — Rolling Mar–Jun 2026</li>
-              <li><strong>GSoC / Open Source</strong> — Org list Feb 2026, Proposals Mar 2026</li>
-            </ul>
-          </div>
-
+      <aside class="sidebar">
+        <h3>Legend</h3>
+        <div class="legend">
+          <div class="item"><span class="swatch backend"></span> Backend (Java + Spring)</div>
+          <div class="item"><span class="swatch frontend"></span> Frontend (React/CSS/JS)</div>
+          <div class="item"><span class="swatch dsa"></span> DSA (Daily LeetCode)</div>
+          <div class="item"><span class="swatch project"></span> Project / Revision</div>
         </div>
 
-        <div class="card" style="margin-top:12px">
-          <h4>Tips</h4>
-          <ol class="small">
-            <li>Keep 2 hrs/day for DSA and 1–2 hrs/day for project work.</li>
-            <li>Upload code to GitHub & pin 2 main projects.</li>
-            <li>Write short README + deployment link for each project.</li>
-          </ol>
+        <h3 style="margin-top:14px">Today's Tips</h3>
+        <div class="task-detail" id="todayTips">
+          Pick one DSA medium problem and one core concept for backend. Small daily wins add up.
         </div>
 
+        <div class="actions">
+          <button class="btn" id="prevBtn">Previous Month</button>
+          <button class="btn" id="nextBtn">Next Month</button>
+        </div>
+
+        <div class="save-note">Progress is stored locally in your browser. Click any day to mark complete.</div>
       </aside>
     </div>
 
-    <footer>
-      <div class="card" style="margin-top:12px">
-        <div class="small">Roadmap generated for Abhiram — Oct 17, 2025. Local persistence: browser localStorage. Use export/import to backup or share progress.</div>
-      </div>
-    </footer>
+    <footer>Made for Abhiram • Java Full Stack Roadmap — DSA everyday — Aggressive 8 months</footer>
   </div>
 
 <script>
+/* Roadmap generator - algorithmic schedule for 8 months */
 (function(){
-  const roadmap = [
-    {id:'oct2025', month:'October 2025', tasks:[
-      'Setup GitHub profile & repo structure',
-      'HTML Basics: semantic tags, forms',
-      'CSS Basics: box-model, flexbox, grid',
-      'Start DSA: Arrays practice (Pepcoding challenges)'
-    ]},
-    {id:'nov2025', month:'November 2025', tasks:[
-      'Advanced CSS: responsive design + portfolio site',
-      'JavaScript fundamentals: ES6+, functions, closures',
-      'Backend: Spring Boot basics — controllers & JPA'
-    ]},
-    {id:'dec2025', month:'December 2025', tasks:[
-      'DOM, Events & Vanilla JS project (Todo app)',
-      'Spring Security basics: JWT auth',
-      'DSA: Recursion & Backtracking practice'
-    ]},
-    {id:'jan2026', month:'January 2026', tasks:[
-      'React fundamentals: components, hooks, router',
-      'Connect React to Spring Boot APIs (Axios)',
-      'DSA: Linked List, Stack & Queue sections'
-    ]},
-    {id:'feb2026', month:'February 2026', tasks:[
-      'Build SkillHub MVP: auth, job CRUD endpoints',
-      'React: state management, forms, client-side validation',
-      'DSA: Trees, BST, HashMap practice'
-    ]},
-    {id:'mar2026', month:'March 2026', tasks:[
-      'Add features: pagination, search filters, file upload',
-      'Add caching (Redis) or explain caching design',
-      'DSA: Heap & DP basics — start solving medium problems'
-    ]},
-    {id:'apr2026', month:'April 2026', tasks:[
-      'Testing & CI: unit tests, GitHub Actions basics',
-      'Deploy backend + frontend (Render / Vercel)',
-      'DSA: Advanced DP, start system-design basics'
-    ]},
-    {id:'may2026', month:'May 2026', tasks:[
-      'Mock interviews: weekly (DSA + system design)',
-      'Polish resume + LinkedIn + portfolio',
-      'DSA: Graphs practice + timed contests'
-    ]},
-    {id:'jun2026', month:'June 2026', tasks:[
-      'Final project polish + README + demo video',
-      'Apply to internships & track apps',
-      'DSA: Revision of top 150 problems'
-    ]},
-    {id:'jul2026', month:'July 2026', tasks:[
-      'Interview season: live interviews + followups',
-      'Behavioral prep: STAR stories for projects',
-      'Continue DSA maintenance & learning from feedback'
-    ]}
+  const DAYS = 8*30; // approx 8 months as 240 days
+  const DAY_MS = 24*60*60*1000;
+
+  // Topic pools
+  const backendTopics = [
+    'Java Basics (syntax, types)',
+    'OOP: Classes & Objects',
+    'OOP: Inheritance & Polymorphism',
+    'OOP: Abstraction & Interfaces',
+    'Collections: List, Set, Map',
+    'Generics & Streams',
+    'Exception Handling & IO',
+    'JDBC & Database connectivity',
+    'SQL basics & Joins',
+    'Spring Core Concepts',
+    'Spring Boot: Project setup',
+    'Spring Boot: REST Controllers',
+    'Spring Data JPA',
+    'Hibernate ORM Basics',
+    'Security: Auth & JWT Basics',
+    'Unit testing & Mocking (JUnit)',
+    'Application properties & Profiles',
+    'Logging & Monitoring',
+    'Microservices intro (concepts)',
+    'Docker basics for Java apps',
+    'Performance tuning & caching',
+    'Concurrency basics in Java',
+    'Build tools (Maven/Gradle)',
+    'Error handling & API design',
+    'Integration with MongoDB',
+    'Deployment basics (Heroku/AWS)',
+    'Refactoring & code quality',
+    'Design patterns for backend',
+    'Advanced Spring topics',
+    'Final backend capstone tasks'
   ];
 
-  const storageKey = 'fullstack_roadmap_progress_v1';
-  let state = JSON.parse(localStorage.getItem(storageKey) || '{}');
+  const frontendTopics = [
+    'HTML semantic elements',
+    'CSS fundamentals',
+    'Box Model & Layouts',
+    'Flexbox deep dive',
+    'CSS Grid basics',
+    'Responsive design & media queries',
+    'Typography & Google Fonts',
+    'CSS variables & best practices',
+    'JavaScript basics (ES6+)',
+    'DOM manipulation & events',
+    'Fetch API & async JS',
+    'React: Intro & CRA',
+    'React: Components & Props',
+    'React: State & Hooks',
+    'React: useEffect & lifecycle',
+    'React Router & navigation',
+    'Forms & controlled components',
+    'State management patterns',
+    'Styling in React (CSS-in-JS)',
+    'Performance in React',
+    'Testing React components',
+    'Build & deploy React app',
+    'Integrate React with backend APIs',
+    'Add auth to frontend (JWT)',
+    'Progressive enhancement & accessibility',
+    'Advanced UI animations',
+    'Final frontend capstone tasks'
+  ];
 
-  function save(){ localStorage.setItem(storageKey, JSON.stringify(state)); updateUI(); }
+  const projectTasks = [
+    'Set up project repo & README',
+    'Design data models & API specs',
+    'Implement user auth',
+    'CRUD for primary entities',
+    'Connect frontend to backend',
+    'Add validations & error handling',
+    'Add file upload / images',
+    'Add search & filters',
+    'Polish UI & responsive fixes',
+    'Write tests & documentation',
+    'Deploy backend',
+    'Deploy frontend',
+    'Final integration & demo'
+  ];
 
-  const monthsEl = document.getElementById('months');
-  function createMonthCard(m){
-    const wrap = document.createElement('div'); wrap.className='month';
-    const header = document.createElement('div'); header.className='month-header';
-    const h = document.createElement('h3'); h.textContent = m.month; header.appendChild(h);
-    const meta = document.createElement('div'); meta.className='meta'; header.appendChild(meta);
-    wrap.appendChild(header);
+  // helper: pick with cycling
+  function cycle(arr,i){return arr[i % arr.length];}
 
-    const list = document.createElement('ul'); list.className='tasks';
-    m.tasks.forEach((t,idx)=>{
-      const li = document.createElement('li'); li.className='task';
-      const id = m.id + '_t' + idx;
-      const chk = document.createElement('input'); chk.type='checkbox'; chk.id = id;
-      const lbl = document.createElement('label'); lbl.htmlFor = id; lbl.textContent = t;
-      chk.checked = (state[id]===true);
-      chk.addEventListener('change', ()=>{ state[id]=chk.checked; save(); });
-      li.appendChild(chk); li.appendChild(lbl); list.appendChild(li);
-    });
-
-    wrap.appendChild(list);
-
-    const pwrap = document.createElement('div'); pwrap.className='progressWrap';
-    const prog = document.createElement('div'); prog.className='progress';
-    const bar = document.createElement('i'); prog.appendChild(bar); pwrap.appendChild(prog); wrap.appendChild(pwrap);
-
-    // mark/clear buttons
-    const btns = document.createElement('div'); btns.style.marginTop='8px';
-    const mark = document.createElement('button'); mark.textContent='Mark all';
-    mark.addEventListener('click', ()=>{ m.tasks.forEach((t,idx)=>{ state[m.id + '_t' + idx]=true; }); save(); });
-    const clear = document.createElement('button'); clear.textContent='Clear'; clear.className='btn-ghost';
-    clear.addEventListener('click', ()=>{ m.tasks.forEach((t,idx)=>{ state[m.id + '_t' + idx]=false; }); save(); });
-    btns.appendChild(mark); btns.appendChild(clear); wrap.appendChild(btns);
-
-    monthsEl.appendChild(wrap);
-    return {wrap,bar,meta,m};
+  // build schedule array
+  function buildSchedule(startDate){
+    const schedule = [];
+    let bIndex=0,fIndex=0,pIndex=0;
+    for(let i=0;i<DAYS;i++){
+      const date = new Date(startDate.getTime() + i*DAY_MS);
+      const iso = date.toISOString().slice(0,10);
+      // DSA always
+      const dsa = generateDSATopic(i);
+      // Decide primary focus: rotate heavy backend + frontend + project
+      // Aggressive plan: most days combine DSA + either Backend or Frontend. Every 7th day -> Project/Revision
+      let role = (i % 7 === 6) ? 'project' : ((i % 2 === 0) ? 'backend' : 'frontend');
+      const backendTopic = (role==='backend') ? cycle(backendTopics,bIndex++) : null;
+      const frontendTopic = (role==='frontend') ? cycle(frontendTopics,fIndex++) : null;
+      const project = (role==='project') ? cycle(projectTasks,pIndex++) : null;
+      schedule.push({date:iso,role,backendTopic,frontendTopic,dsa,project});
+    }
+    return schedule;
   }
 
-  const cards = roadmap.map(createMonthCard);
-
-  function computeProgress(){
-    let done=0,total=0; roadmap.forEach(m=>{ m.tasks.forEach((t,idx)=>{ total++; if(state[m.id+'_t'+idx]) done++; }) });
-    return Math.round(total? (done/total)*100 : 0);
+  function generateDSATopic(i){
+    // simple progression through important DSA topics
+    const dsaPool = [
+      'Arrays (warmup): 3 easy',
+      'Two pointers & Sliding window',
+      'Strings problems: 3',
+      'Hash maps & frequency',
+      'Sorting & Searching problems',
+      'Recursion & Backtracking basics',
+      'Linked List core problems',
+      'Stacks & Queues',
+      'Binary Tree basics',
+      'BST problems',
+      'Heap & Priority Queue',
+      'Greedy algorithms',
+      'Dynamic Programming intro',
+      'DP: subsequence & knapsack',
+      'Graph basics & BFS/DFS',
+      'Graph: shortest paths',
+      'Advanced DP & optimizations',
+      'Practice contest (timed)',
+      'Systematic revision: weak topics',
+      'Mixed problem set: medium'
+    ];
+    return dsaPool[i % dsaPool.length];
   }
 
-  function updateUI(){
-    cards.forEach(c=>{
-      const {m,bar,meta,wrap} = c;
-      const total = m.tasks.length; let done=0; m.tasks.forEach((t,idx)=>{ if(state[m.id+'_t'+idx]) done++; });
-      const pct = total? Math.round((done/total)*100) : 0; bar.style.width = pct+'%';
-      meta.textContent = `${done}/${total} tasks`;
-    });
-    const overall = computeProgress(); document.getElementById('overallPct').textContent = overall + '%';
+  // rendering logic
+  const root = document.getElementById('calendarRoot');
+  const startDateInput = document.getElementById('startDate');
+  const generateBtn = document.getElementById('generate');
+  const exportBtn = document.getElementById('exportJson');
+  const prevBtn = document.getElementById('prevBtn');
+  const nextBtn = document.getElementById('nextBtn');
+  const todayTips = document.getElementById('todayTips');
 
-    // next target: find first undone task
-    let next='All set — great job!'; outer: for(const m of roadmap){ for(let i=0;i<m.tasks.length;i++){ if(!state[m.id+'_t'+i]){ next = m.month + ' — ' + m.tasks[i]; break outer; } } }
-    document.getElementById('nextTarget').textContent = next;
+  // load defaults: today's date
+  const today = new Date();
+  startDateInput.value = today.toISOString().slice(0,10);
+
+  let masterSchedule = [];
+  let currentOffset = 0; // number of weeks offset shown
+  const WEEKS_TO_SHOW = 6; // initial show 6 weeks (~1.5 months)
+
+  function renderWeekRange(schedule,weekOffset){
+    // weekOffset in weeks
+    root.innerHTML = '';
+    const startIndex = Math.max(0, weekOffset*7);
+    const endIndex = Math.min(schedule.length, startIndex + WEEKS_TO_SHOW*7);
+
+    for(let w = startIndex; w < endIndex; w+=7){
+      const weekDiv = document.createElement('div');
+      weekDiv.style.marginBottom='12px';
+      const weekLabel = document.createElement('div');
+      weekLabel.style.color='var(--muted)';
+      weekLabel.style.fontSize='13px';
+      const dateLabel = schedule[w] ? schedule[w].date : '';
+      weekLabel.textContent = 'Week of ' + dateLabel;
+      weekDiv.appendChild(weekLabel);
+
+      const grid = document.createElement('div'); grid.className='week-grid';
+      for(let d=0; d<7; d++){
+        const idx = w + d; const cell = document.createElement('div'); cell.className='day';
+        if(idx >= schedule.length){ cell.innerHTML=''; grid.appendChild(cell); continue; }
+        const day = schedule[idx];
+        const dateEl = document.createElement('div'); dateEl.className='date'; dateEl.textContent = day.date + ' • ' + weekdayName(new Date(day.date).getDay());
+        cell.appendChild(dateEl);
+        // DSA pill
+        const dsaP = document.createElement('div'); dsaP.className='pill dsa'; dsaP.textContent = 'DSA: ' + day.dsa; cell.appendChild(dsaP);
+        if(day.role==='backend'){
+          const b = document.createElement('div'); b.className='pill backend'; b.textContent = 'Backend: ' + day.backendTopic; cell.appendChild(b);
+        } else if(day.role==='frontend'){
+          const f = document.createElement('div'); f.className='pill frontend'; f.textContent = 'Frontend: ' + day.frontendTopic; cell.appendChild(f);
+        } else if(day.role==='project'){
+          const p = document.createElement('div'); p.className='pill project'; p.textContent = 'Project: ' + day.project; cell.appendChild(p);
+        }
+
+        // click to toggle complete
+        const toggle = document.createElement('div'); toggle.style.marginTop='8px'; toggle.style.fontSize='12px';
+        const doneKey = 'done_'+day.date;
+        const done = localStorage.getItem(doneKey) === '1';
+        const btn = document.createElement('button'); btn.className='btn'; btn.style.padding='6px 8px'; btn.style.fontSize='12px';
+        btn.textContent = done ? 'Completed' : 'Mark Complete';
+        btn.onclick = ()=>{ localStorage.setItem(doneKey, done? '0' : '1'); renderWeekRange(masterSchedule,currentOffset); };
+        toggle.appendChild(btn);
+        cell.appendChild(toggle);
+
+        grid.appendChild(cell);
+      }
+      weekDiv.appendChild(grid);
+      root.appendChild(weekDiv);
+    }
   }
 
-  document.getElementById('reset').addEventListener('click', ()=>{ if(confirm('Reset all saved progress?')){ state={}; save(); } });
-  document.getElementById('markMonthDone').addEventListener('click', ()=>{
-    const month = prompt('Enter month id to mark done (ex: oct2025)'); if(!month) return; const m = roadmap.find(x=>x.id===month); if(!m){ alert('Month id not found'); return; } m.tasks.forEach((t,idx)=> state[m.id+'_t'+idx]=true); save();
-  });
-  document.getElementById('clearMonth').addEventListener('click', ()=>{
-    const month = prompt('Enter month id to clear (ex: oct2025)'); if(!month) return; const m = roadmap.find(x=>x.id===month); if(!m){ alert('Month id not found'); return; } m.tasks.forEach((t,idx)=> state[m.id+'_t'+idx]=false); save();
-  });
+  function weekdayName(i){ return ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'][i]; }
 
-  document.getElementById('notes').value = state.notes || '';
-  document.getElementById('saveNotes').addEventListener('click', ()=>{ state.notes = document.getElementById('notes').value; save(); alert('Notes saved'); });
-  document.getElementById('clearNotes').addEventListener('click', ()=>{ if(confirm('Clear notes?')){ state.notes=''; document.getElementById('notes').value=''; save(); } });
+  function generateFromInputs(){
+    const sd = new Date(startDateInput.value + 'T00:00:00');
+    masterSchedule = buildSchedule(sd);
+    currentOffset = 0; renderWeekRange(masterSchedule,currentOffset);
+    // show tip for first day
+    const todayObj = masterSchedule[0];
+    todayTips.textContent = 'Day 1 tip: Start with ' + masterSchedule[0].dsa + ' and backend topic: ' + (masterSchedule[0].backendTopic || masterSchedule[0].frontendTopic || masterSchedule[0].project);
+  }
 
-  // import/export
-  document.getElementById('exportJSON').addEventListener('click', ()=>{
-    const dataStr = JSON.stringify(state,null,2);
-    const blob = new Blob([dataStr],{type:'application/json'});
+  generateBtn.addEventListener('click',generateFromInputs);
+  prevBtn.addEventListener('click',()=>{ currentOffset = Math.max(0,currentOffset-1); renderWeekRange(masterSchedule,currentOffset); });
+  nextBtn.addEventListener('click',()=>{ currentOffset = Math.min(Math.floor(DAYS/7)-WEEKS_TO_SHOW, currentOffset+1); renderWeekRange(masterSchedule,currentOffset); });
+
+  exportBtn.addEventListener('click',()=>{
+    const data = JSON.stringify(masterSchedule, null, 2);
+    const blob = new Blob([data],{type:'application/json'});
     const url = URL.createObjectURL(blob);
-    const a = document.createElement('a'); a.href=url; a.download='roadmap-progress.json'; document.body.appendChild(a); a.click(); a.remove(); URL.revokeObjectURL(url);
-  });
-  document.getElementById('importJSON').addEventListener('click', ()=>{ document.getElementById('importFile').click(); });
-  document.getElementById('importFile').addEventListener('change', (e)=>{
-    const f = e.target.files[0]; if(!f) return; const reader = new FileReader(); reader.onload = ()=>{ try{ const obj = JSON.parse(reader.result); state = obj; save(); alert('Imported progress'); }catch(err){ alert('Invalid file'); } }; reader.readAsText(f);
+    const a = document.createElement('a'); a.href=url; a.download='8month-roadmap.json'; a.click(); URL.revokeObjectURL(url);
   });
 
-  // search
-  document.getElementById('search').addEventListener('input', (e)=>{
-    const q = e.target.value.trim().toLowerCase(); cards.forEach(c=>{
-      const {m,wrap} = c;
-      const has = m.tasks.some(t=> t.toLowerCase().includes(q)) || m.month.toLowerCase().includes(q);
-      wrap.style.display = q? (has? 'block':'none') : 'block';
-    });
-  });
-
-  // initialize defaults if empty
-  if(!state || Object.keys(state).length===0){ state = state || {}; /* leave empty: user will check items as they go */ }
-  // load notes
-  document.getElementById('notes').value = state.notes || '';
-
-  updateUI();
+  // initial generate
+  generateFromInputs();
 })();
 </script>
 </body>
